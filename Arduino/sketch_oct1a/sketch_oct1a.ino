@@ -4,10 +4,13 @@ const int GledPin = 4;
 const int BledPin = 5;
 
 int buttonState = 0;
+int ledState = LOW;
 int ledcolor = 0;
 
 bool ButtonPressed = false;
 String currentcolor = "led";
+unsigned long previousMillis = 0;
+const long interval = 1000;
 
 void setup() {
   // put your setup code here, to run once:
@@ -32,6 +35,16 @@ void loop() {
     ButtonPressed = false;
   }
 
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
+  // save the last time you blinked the LED
+  previousMillis = currentMillis;
+  if (ledState == LOW) {
+    ledState = HIGH;
+  } else {
+    ledState = LOW;
+    }
+  }
   if (ledcolor == 0) {
     currentcolor = "LED off";
     digitalWrite(RledPin, HIGH);
