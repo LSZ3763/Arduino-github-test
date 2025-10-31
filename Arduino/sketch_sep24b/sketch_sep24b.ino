@@ -1,7 +1,7 @@
 const int rLEDPin = 9;
 const int gLEDPin = 10;
 const int bLEDPin = 11;
-const int pushButton = 2;
+const int pushButton = 2; 
 const int ledPin = 3;
 
 int buttonState = 0;
